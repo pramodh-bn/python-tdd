@@ -1,5 +1,6 @@
 import pytest
 from app.util import increment
+from app.util import another_sum
 
 @pytest.mark.parametrize(
     'number, result',
@@ -12,3 +13,6 @@ from app.util import increment
 )
 def test_increment(number, result):
     assert increment(number) == result
+
+def test_another_sum():
+    assert another_sum(3, 2) == 5
