@@ -62,3 +62,21 @@ class Article(BaseModel):
         con.close()
 
         return articles
+
+    def save(self) -> "Article":
+        with sqlite3.connect(os.getenv("DATABASE_NAME", "database.db")) as conn:
+            cur = conn.cursor()
+            cur.execute(
+                "INSERT INTO articles (id, author, title, content) values (?, ?, ?, ?)",
+                (self.id, self.author, self.title, self.content)
+            )
+            conn.commit()
+        return self
+
+    @classmethod
+    def create_table(cls, database_name="database.db"):
+        conn = sqlite3.connect(database_name)
+        conn.execute(
+            "CREATE TABLE IF NOT EXISTS articles (id TEXT, author TEXT, title TEXT, content TEXT)"
+        )
+        conn.close()
