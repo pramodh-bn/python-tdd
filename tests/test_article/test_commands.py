@@ -29,7 +29,7 @@ def test_create_article():
     assert db_article.id == article.id
     assert db_article.author == article.author
     assert db_article.title == article.title
-    assert db_article.conten == article.content
+    assert db_article.content == article.content
 
 
 def test_create_article_already_exists():

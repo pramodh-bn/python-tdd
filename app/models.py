@@ -15,7 +15,7 @@ class Article(BaseModel):
     content: str
 
     @classmethod
-    def get_by_id(cls, article_id:str):
+    def get_by_id(cls, article_id:str) -> "Article":
         con = sqlite3.connect(os.getenv("DATABASE_NAME", "database.db"))
         con.row_factory = sqlite3.Row
 
@@ -28,6 +28,8 @@ class Article(BaseModel):
 
         article = cls(**record)
         con.close()
+
+        return article
 
     @classmethod
     def get_by_title(cls, title:str):
