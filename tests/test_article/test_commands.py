@@ -1,7 +1,16 @@
 import pytest
+import random
 
 from app.models import Article
 from app.commands import CreateArticleCommand, AlreadyExists
+
+@pytest.fixture
+def random_name():
+    names = ["John", "Jane", "Marry"]
+    return random.choice(names)
+
+def test_fixture_usage(random_name):
+    assert random_name
 
 def test_create_article():
     """
@@ -22,6 +31,27 @@ def test_create_article():
     assert db_article.title == article.title
     assert db_article.conten == article.content
 
+
+def test_create_article_already_exists():
+    """
+    Given CreateArticleCommand with a title of some article in database
+    WHEN the execute method is called
+    THEN the AlreadyExists exception must be raised
+    """
+    Article(
+        author="jane@doe.com",
+        title="New Article",
+        content="Super extra awesome article"
+    ).save()
+
+    cmd = CreateArticleCommand(
+        author="john@doe.com",
+        title="New Article",
+        content="Super awesome article"
+    )
+
+    with pytest.raises(AlreadyExists):
+        cmd.execute()
 
 
 
