@@ -11,5 +11,5 @@ def database():
     os.environ["DATABASE_NAME"] = file_name
     Article.create_table(database_name=file_name)
     yield
-    os.close(file_name)
+    file_name.close()
     os.unlink(file_name)
