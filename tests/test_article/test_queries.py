@@ -1,5 +1,6 @@
 from app.models import Article
 from app.queries import ListArticlesQuery
+from app.queries import GetArticleByIDQuery
 
 def test_list_articles():
     """
@@ -22,3 +23,22 @@ def test_list_articles():
 
     assert len(query.execute()) == 2
 
+
+
+def test_get_articles_by_id():
+    """
+    Given ID of articles stored in the database
+    WHEN the execute method is called on GetArticlesByIDQuery with an ID
+    THEN it should return the article with the same ID
+    """
+    article = Article(
+        author="jane@doe.com",
+        title="new article",
+        content="super extra awesome article"
+    ).save()
+
+    query = GetArticleByIDQuery(
+        id = article.id
+    )
+
+    assert query.execute().id == article.id
