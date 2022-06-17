@@ -16,4 +16,3 @@ class Blog(BaseModel):
     author: EmailStr
     title: str
     content: str
-

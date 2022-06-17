@@ -5,8 +5,8 @@ import requests
 import pytest
 from jsonschema import validate, RefResolver
 
-from app.app import app
-from app.models import Article
+from blog.app import app
+from blog.models import Article
 
 @pytest.fixture
 def client():

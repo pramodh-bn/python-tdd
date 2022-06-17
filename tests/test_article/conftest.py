@@ -3,7 +3,7 @@ import tempfile
 
 import pytest
 
-from app.models import Article
+from blog.models import Article
 
 @pytest.fixture(autouse=True)
 def database():

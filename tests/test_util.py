@@ -1,6 +1,6 @@
 import pytest
-from app.util import increment
-from app.util import another_sum
+from blog.util import increment
+from blog.util import another_sum
 
 @pytest.mark.parametrize(
     'number, result',

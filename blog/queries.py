@@ -1,6 +1,6 @@
 from typing import List
 from pydantic import BaseModel
-from app.models import Article
+from blog.models import Article
 
 class ListArticlesQuery(BaseModel):
 

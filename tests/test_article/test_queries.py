@@ -1,6 +1,6 @@
-from app.models import Article
-from app.queries import ListArticlesQuery
-from app.queries import GetArticleByIDQuery
+from blog.models import Article
+from blog.queries import ListArticlesQuery
+from blog.queries import GetArticleByIDQuery
 
 def test_list_articles():
     """

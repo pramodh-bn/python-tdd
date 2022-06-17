@@ -1,5 +1,5 @@
-from app.loan import Loan
-from app.reject_loan import reject_loan
+from blog.loan import Loan
+from blog.reject_loan import reject_loan
 
 def test_rejecT_loan():
     loan = Loan(amount=100_000)
