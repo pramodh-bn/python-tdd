@@ -82,3 +82,21 @@ class Article(BaseModel):
             "CREATE TABLE IF NOT EXISTS articles (id TEXT, author TEXT, title TEXT, content TEXT)"
         )
         conn.close()
+
+    @classmethod
+    def _get_by_attribute(cls, sql_query:str, sql_query_values: tuple):
+        con = sqlite3.connect(os.getenv("DATABASE_NAME", "database.db"))
+        con.row_factory = sqlite3.Row
+
+        cur = con.cursor()
+        cur.execute(sql_query, sql_query_values)
+
+        record = cur.fetchone()
+
+        if record is None:
+            raise NotFound
+
+        article = cls(**record)
+        con.close()
+
+        return article

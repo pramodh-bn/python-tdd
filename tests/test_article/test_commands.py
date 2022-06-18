@@ -31,6 +31,33 @@ def test_create_article():
     assert db_article.title == article.title
     assert db_article.content == article.content
 
+def test_create_article1(monkeypatch):
+    """
+    Given createArticleCommand with valid author, title and content properties
+    WHEN the execute method is called
+    THEN a new Article must exist in the database with the same attributes
+    """
+    article = Article(
+        author="john@doe.com",
+        title="new article",
+        content="this is some content"
+    )
+    monkeypatch.setattr(
+        Article,
+        "save",
+        lambda self: article
+    )
+    cmd = CreateArticleCommand(
+        author="john@doe.com",
+        title="new article",
+        content="this is some content"
+    )
+    db_article = cmd.execute()
+
+    assert db_article.id == article.id
+    assert db_article.author == article.author
+    assert db_article.title == article.title
+    assert db_article.content == article.content
 
 def test_create_article_already_exists():
     """
