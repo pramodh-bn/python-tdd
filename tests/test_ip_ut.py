@@ -1,6 +1,8 @@
 from unittest import mock
+
 import requests
 from requests import Response
+
 
 def get_my_ip():
     response = requests.get('http://ipinfo.io/json')

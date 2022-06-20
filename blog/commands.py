@@ -1,5 +1,7 @@
 from pydantic import BaseModel, EmailStr
+
 from blog.models import Article, NotFound
+
 
 class AlreadyExists(Exception):
     pass

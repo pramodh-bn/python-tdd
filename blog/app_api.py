@@ -1,7 +1,7 @@
 import uuid
 
 from flask import Flask, jsonify
-from pydantic import ValidationError, BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, ValidationError
 
 app = Flask(__name__)
 

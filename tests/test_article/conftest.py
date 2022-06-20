@@ -5,6 +5,7 @@ import pytest
 
 from blog.models import Article
 
+
 @pytest.fixture(autouse=True)
 def database():
     handle, file_name = tempfile.mkstemp()

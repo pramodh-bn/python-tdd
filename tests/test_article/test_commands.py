@@ -1,8 +1,10 @@
-import pytest
 import random
 
+import pytest
+
+from blog.commands import AlreadyExists, CreateArticleCommand
 from blog.models import Article
-from blog.commands import CreateArticleCommand, AlreadyExists
+
 
 @pytest.fixture
 def random_name():

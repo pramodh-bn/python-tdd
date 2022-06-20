@@ -5,6 +5,7 @@ from typing import List
 
 from pydantic import BaseModel, EmailStr, Field
 
+
 class NotFound(Exception):
     pass
 

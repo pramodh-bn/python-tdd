@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from enum import Enum
 
+
 class LoanStatus(str, Enum):
     PENDING = 'PENDING'
     ACCEPTED = 'ACCEPTED'

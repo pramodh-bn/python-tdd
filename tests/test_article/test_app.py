@@ -1,12 +1,13 @@
 import json
 import pathlib
-import requests
 
 import pytest
-from jsonschema import validate, RefResolver
+import requests
+from jsonschema import RefResolver, validate
 
 from blog.app import app
 from blog.models import Article
+
 
 @pytest.fixture
 def client():
