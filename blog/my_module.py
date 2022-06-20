@@ -12,11 +12,11 @@ def get_error_message(error_type):
 
 def main():
     res = get('http://api.gethub.events')
-    STATUS = res.status_code
+    status = res.status_code
     if res.ok:
-        print(f"{STATUS}")
+        print(f"{status}")
     else:
-        print(get_error_message(STATUS))
+        print(get_error_message(status))
 
 
 if __name__ == '__main__':
